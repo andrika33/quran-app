@@ -13,4 +13,4 @@ const Put = (baseUrl, path, data)=>{
     return promise
 }
 
-return Put;
+export default Put;
