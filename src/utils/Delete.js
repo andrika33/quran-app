@@ -13,4 +13,4 @@ const Delete = (baseUrl, path)=>{
     return promise
 }
 
-return Delete;
+export default Delete;

@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import API from '../utils/Services'
+import { Link } from 'react-router-dom';
 
 export const Sidebar = () => {
+
+  const [surah, setSurah]= useState(null)
+
+  const getSurahApi = async ()=>{
+      await API.getSurah().then(res=>{
+        setSurah(res.data)
+      })
+  }
+
+  useEffect(()=>{
+    getSurahApi()
+  })
+
   return (
     <div>
       <aside id="sidebar" className="fixed hidden z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75" aria-label="Sidebar">
@@ -8,28 +23,32 @@ export const Sidebar = () => {
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex-1 px-3 bg-white divide-y space-y-1">
               <ul className="space-y-2 pb-2">
-                <li>
-                  <form action="#" method="GET" className="lg:hidden">
-                    <label htmlFor="mobile-search" className="sr-only">Search</label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-                        </svg>
-                      </div>
-                      <input type="text" name="email" id="mobile-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-cyan-600 focus:ring-cyan-600 block w-full pl-10 p-2.5" placeholder="Search" />
-                    </div>
-                  </form>
-                </li>
-                <li>
-                  <a href="#" className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group">
-                    <svg className="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z" />
-                      <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
-                    </svg>
-                    <span className="ml-3">Item Surah</span>
-                  </a>
-                </li>
+  
+                { surah?.data?.map((items, index)=>{ 
+                    return(
+                      <li key={index}>
+                  
+                          <Link
+                              to={"/surah/"+items.number}
+                              className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group shadow-sm border cursor-pointer"
+                          >
+                              <div 
+                                  className="w-6 h-6 text-white text-xs justify-center items-center flex rounded-full bg-[#83D8BA]"
+                              >
+                                  {items.number}
+                              </div>
+                              <div className="flex items-center justify-between">
+                                  <div className="flex items-center">
+                                      <div className="flex flex-col items-start ml-2 ">
+                                          <p className="text-gray-700">{items.name.transliteration.id}<span className="text-xs text-gray-500"> ({items.name.short})</span></p>
+                                          <p className="text-gray-300 text-xs"> {items.name.translation.id} | {items.numberOfVerses} Ayat</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </Link>
+                      </li>
+                    )}   
+                )}
                
               </ul>
             </div>

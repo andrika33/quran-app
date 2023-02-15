@@ -13,4 +13,4 @@ const Post = (baseUrl, path, data)=>{
     return promise
 }
 
-return Post;
+export default Post;
