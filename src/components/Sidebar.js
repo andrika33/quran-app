@@ -23,18 +23,11 @@ export const Sidebar = () => {
           <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
             <div className="flex-1 px-3 bg-white divide-y space-y-1">
               <ul className="space-y-2 pb-2">
-  
-                { surah?.data?.map((items, index)=>{ 
+                  { surah?.data?.map((items, index)=>{ 
                     return(
-                      <li key={index}>
-                  
-                          <Link
-                              to={"/surah/"+items.number}
-                              className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group shadow-sm border cursor-pointer"
-                          >
-                              <div 
-                                  className="w-6 h-6 text-white text-xs justify-center items-center flex rounded-full bg-[#83D8BA]"
-                              >
+                      <li key={index}>      
+                          <Link to={"/surah/"+items.number} className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group shadow-sm border cursor-pointer">
+                              <div className="w-6 h-6 text-white text-xs justify-center items-center flex rounded-full bg-[#83D8BA]">
                                   {items.number}
                               </div>
                               <div className="flex items-center justify-between">
@@ -48,8 +41,7 @@ export const Sidebar = () => {
                           </Link>
                       </li>
                     )}   
-                )}
-               
+                  )}
               </ul>
             </div>
           </div>
