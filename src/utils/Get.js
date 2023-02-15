@@ -13,4 +13,4 @@ const Get = (baseUrl, path)=>{
     return promise
 }
 
-return Get;
+export default Get;
