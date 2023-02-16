@@ -2,9 +2,6 @@ import Get from './Get';
 
 import {baseUrlSurah} from "../config/Config.js";
 
-console.log(baseUrlSurah);
-
-
 // POST
 // const examplePost = (data)=> Post(baseUrlSurah, 'example', data)
 
