@@ -6,14 +6,14 @@ export const Sidebar = () => {
 
   const [listsurah, setListSurah]= useState(null)
 
-  const getSurahApi = async ()=>{
+  const getListSurahApi = async ()=>{
       await API.getSurah().then(res=>{
         setListSurah(res.data)
       })
   }
 
   useEffect(()=>{
-    getSurahApi()
+    getListSurahApi()
   })
 
   return (

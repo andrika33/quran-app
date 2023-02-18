@@ -13,9 +13,11 @@ import {baseUrlSurah} from "../config/config.js";
 
 // GET
 const getSurah = ()=> Get(baseUrlSurah, 'surah')
+const getSurahById = (id)=> Get(baseUrlSurah, `surah/${id}`)
 
 const API = {
-    getSurah
+    getSurah,
+    getSurahById
 }
 
 export default API;
