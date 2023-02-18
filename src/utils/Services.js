@@ -1,6 +1,6 @@
 import Get from './Get';
 
-import {baseUrlSurah} from "../config/Config.js";
+import {baseUrlSurah} from "../config/config.js";
 
 // POST
 // const examplePost = (data)=> Post(baseUrlSurah, 'example', data)
