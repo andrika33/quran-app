@@ -1,6 +1,6 @@
 import Get from './Get';
 
-import {baseUrlSurah} from "../config/Config.js";
+import {baseUrlSurah} from "../config/config.js";
 
 // POST
 // const examplePost = (data)=> Post(baseUrlSurah, 'example', data)
@@ -13,9 +13,11 @@ import {baseUrlSurah} from "../config/Config.js";
 
 // GET
 const getSurah = ()=> Get(baseUrlSurah, 'surah')
+const getSurahById = (id)=> Get(baseUrlSurah, `surah/${id}`)
 
 const API = {
-    getSurah
+    getSurah,
+    getSurahById
 }
 
 export default API;
